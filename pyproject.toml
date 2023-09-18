@@ -1,0 +1,39 @@
+[tool.poetry]
+name = "django-unified-signals"
+version = "0.1.0"
+description = ""
+authors = ["Janusz Kamieński <200957+ivellios@users.noreply.github.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [
+    { include = "unified_signals" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+Django = "^4.0"
+django-stubs = "^4.2.4"
+pytest-cov = "^4.1.0"
+setuptools = "^68.2.2"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.3.0"
+ipython = "^8.14.0"
+ipdb = "^0.13.13"
+liccheck = "^0.9.1"
+pytest-django = "^4.5.2"
+pytest-watch = "^4.2.0"
+safety = "^2.3.5"
+checkov = "^2.4.41"
+
+[tool.mypy]
+plugins = [
+    "mypy_django_plugin.main"
+]
+
+[tool.django-stubs]
+django_settings_module = "tests.testapp.settings"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

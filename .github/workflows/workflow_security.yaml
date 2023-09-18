@@ -1,0 +1,29 @@
+name: Workflows security checks
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - ".github/**/*"
+  pull_request:
+    paths:
+      - ".github/**/*"
+
+permissions: read-all
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        cache: 'pip'
+    - name: Install dependencies
+      run: pip install checkov
+    - name: Workflow safety check
+      run: |
+        checkov -d .github

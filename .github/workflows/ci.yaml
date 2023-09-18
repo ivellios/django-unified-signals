@@ -6,14 +6,18 @@ on:
       - master
   pull_request:
 
+permissions: read-all
+
 jobs:
   checks:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - uses: actions/setup-python@master
+    - name: Set up Python
+      uses: actions/setup-python@v4
       with:
-        python-version: 3.11
+        python-version: '3.11'
+        cache: 'pip'
     - name: Install dependencies
       run: pip install tox poetry checkov
     - name: Workflow safety check

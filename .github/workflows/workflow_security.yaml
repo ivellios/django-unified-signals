@@ -21,7 +21,6 @@ jobs:
       uses: actions/setup-python@master
       with:
         python-version: '3.11'
-        cache: 'pip'
     - name: Install dependencies
       run: pip install checkov
     - name: Workflow safety check

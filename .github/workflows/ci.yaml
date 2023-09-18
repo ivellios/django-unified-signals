@@ -15,7 +15,9 @@ jobs:
       with:
         python-version: 3.11
     - name: Install dependencies
-      run: pip install tox poetry
+      run: pip install tox poetry checkov
+    - name: Workflow safety check
+      run: checkov -d .github
     - name: Safety Check
       run: tox -e safety
     - name: License Check

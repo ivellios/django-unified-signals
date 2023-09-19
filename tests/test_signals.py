@@ -83,7 +83,4 @@ def test_send_robus_signal_checks_for_wrong_type():
     signal = UnifiedSignal(DataMock)
 
     with pytest.raises(UnifiedSignalMessageTypeError):
-        signal.send_robust(
-            mock.Mock(),
-            10
-        )
+        signal.send_robust(mock.Mock(), 10)

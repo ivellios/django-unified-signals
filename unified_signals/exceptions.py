@@ -1,4 +1,2 @@
-
-
 class UnifiedSignalMessageTypeError(ValueError):
     pass

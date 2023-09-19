@@ -49,6 +49,8 @@ class UnifiedSignal(Signal):
         self._check_message_class(message)
         return super().send(sender, message=message, **named)
 
-    def send_robust(self, sender: typing.Any, message: typing.Type = None, **named: typing.Any) -> list[tuple[typing.Callable, Exception | typing.Any]]:
+    def send_robust(
+        self, sender: typing.Any, message: typing.Type = None, **named: typing.Any
+    ) -> list[tuple[typing.Callable, Exception | typing.Any]]:
         self._check_message_class(message)
         return super().send_robust(sender, **named)

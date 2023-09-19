@@ -2,6 +2,8 @@ import typing
 
 from django.dispatch import Signal
 
+from .exceptions import UnifiedSignalMessageTypeError
+
 
 class UnifiedSignal(Signal):
     """
@@ -37,10 +39,16 @@ class UnifiedSignal(Signal):
         super().__init__(use_caching=use_caching)
         self.message_class = message_class
 
-    def send(self, sender, message=None, **named):
+    def _check_message_class(self, message):
         if not isinstance(message, self.message_class):
-            raise ValueError(
+            raise UnifiedSignalMessageTypeError(
                 f"Wrong message dataclass passed to the signal send: {message.__class__}. Expected {self.message_class}"
             )
 
+    def send(self, sender: typing.Any, message=None, **named):
+        self._check_message_class(message)
         return super().send(sender, message=message, **named)
+
+    def send_robust(self, sender: typing.Any, message: typing.Type = None, **named: typing.Any) -> list[tuple[typing.Callable, Exception | typing.Any]]:
+        self._check_message_class(message)
+        return super().send_robust(sender, **named)

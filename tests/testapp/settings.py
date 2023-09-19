@@ -1,1 +1,3 @@
-# This file can be empty as the code is not really using any of the settings
+# minimal settings for running tests
+
+SECRET_KEY = "Some secret key"

@@ -51,7 +51,7 @@ It extends the standard `django.dispatch.Signal` class,
 so it can be used in the same way.
 
 ```python
-user_deactivated_signal.send(sender, MyMessage(name='John', age=30))
+user_deactivated_signal.send(sender, UserMessage(name='John', age=30))
 ```
 
 The receiver can be defined in the same way as for the standard Django Signal:

@@ -5,6 +5,7 @@ import pytest
 from django.dispatch import receiver
 
 from unified_signals.signals import UnifiedSignal
+from unified_signals.exceptions import UnifiedSignalMessageTypeError
 
 
 @dataclasses.dataclass
@@ -27,7 +28,7 @@ def test_send_signal_without_data():
     signal = UnifiedSignal(DataMock)
 
     # when, then
-    with pytest.raises(ValueError):
+    with pytest.raises(UnifiedSignalMessageTypeError):
         signal.send(SenderMock)
 
 
@@ -40,7 +41,7 @@ def test_send_signal_with_wrong_data_type():
         pass
 
     # when, then
-    with pytest.raises(ValueError):
+    with pytest.raises(UnifiedSignalMessageTypeError):
         signal.send(SenderMock, OtherDataMock())
 
 
@@ -51,6 +52,7 @@ def test_send_signal_with_proper_data_type():
     @receiver(signal)
     def handle_signal(sender, message: DataMock, **kwargs):
         assert message.required_field == 10
+        assert message.__class__ == DataMock
 
     # when
     signal.send(
@@ -59,3 +61,26 @@ def test_send_signal_with_proper_data_type():
             required_field=10,
         ),
     )
+
+
+def test_send_robust_signal():
+    signal = UnifiedSignal(DataMock)
+
+    @receiver(signal)
+    def handle_signal(sender, message: DataMock, **kwargs):
+        assert message.required_field == 10
+        assert message.__class__ == DataMock
+
+    signal.send_robust(
+        mock.Mock(),
+        DataMock(
+            required_field=10,
+        ),
+    )
+
+
+def test_send_robus_signal_checks_for_wrong_type():
+    signal = UnifiedSignal(DataMock)
+
+    with pytest.raises(UnifiedSignalMessageTypeError):
+        signal.send_robust(mock.Mock(), 10)

@@ -1,5 +1,7 @@
 # Django Unified Signals
 
+[![Continuous Integration](https://github.com/ivellios/django-unified-signals/actions/workflows/ci.yaml/badge.svg)](https://github.com/ivellios/django-unified-signals/actions/workflows/ci.yaml)
+
 This package extends behavior of the Django Signals, by unifying the data passed
 when the signal is sent. That way both: the sender and the receiver can be sure 
 that the data passed is always of the same type.

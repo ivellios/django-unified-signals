@@ -44,6 +44,9 @@ class UserMessage:
 Now that we have the message structure defined, we can create the signal:
 
 ```python
+
+from unified_signals import UnifiedSignal
+
 user_deactivated_signal = UnifiedSignal(UserMessage)
 ```
 

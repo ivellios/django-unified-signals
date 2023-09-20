@@ -45,9 +45,7 @@ class UnifiedSignal(Signal):
                 f"Wrong message dataclass passed to the signal send: {message.__class__}. Expected {self.message_class}"
             )
 
-    def send(
-        self, sender: typing.Any, message: typing.Optional[typing.Type] = None, **named
-    ):
+    def send(self, sender: typing.Any, message: typing.Any = None, **named):
         self._check_message_class(message)
         return super().send(sender, message=message, **named)
 

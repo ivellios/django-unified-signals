@@ -69,7 +69,7 @@ def handle_user_deactivated(sender, message: UserMessage, **kwargs):
 
 The difference is that the message is always of the same type, so the receiver
 can be sure that the message is always of the same type. If the message is not
-of the expected type when sending the signal, the `UnifiedSignalMessageTypeError` 
+of the expected type when sending the signal, the `unified_signals.exceptions.UnifiedSignalMessageTypeError` 
 exception will be raised.
 
 ```python

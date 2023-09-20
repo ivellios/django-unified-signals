@@ -6,7 +6,7 @@ authors = ["Janusz Kamieński <200957+ivellios@users.noreply.github.com>"]
 license = "MIT"
 readme = "README.md"
 packages = [
-    { include = "unified_signals" }
+    { include = "unified_signals", from = "src" }
 ]
 
 [tool.poetry.dependencies]
@@ -14,7 +14,7 @@ python = "^3.9"
 Django = "^4.0"
 django-stubs = "^4.2.4"
 pytest-cov = "^4.1.0"
-setuptools = "^68.2.2"
+setuptools = "^68"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.3.0"

@@ -20,11 +20,10 @@ of checking if the send message is following the contract.
 
 ## Installation
 
-Until the package lands in PyPI, you can install it directly from the GitHub
-in the bleeding edge version directly from the master branch. 
+The package is [available on PyPI](https://pypi.org/project/django-unified-signals/): 
 
 ```bash
-pip install git+https://github.com/ivellios/django-unified-signals.git@master
+pip install django-unified-signals
 ```
 
 ## Usage
@@ -69,7 +68,7 @@ def handle_user_deactivated(sender, message: UserMessage, **kwargs):
 
 The difference is that the message is always of the same type, so the receiver
 can be sure that the message is always of the same type. If the message is not
-of the expected type when sending the signal, the `UnifiedSignalMessageTypeError` 
+of the expected type when sending the signal, the `unified_signals.exceptions.UnifiedSignalMessageTypeError` 
 exception will be raised.
 
 ```python

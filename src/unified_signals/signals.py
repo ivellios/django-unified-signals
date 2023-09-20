@@ -52,7 +52,7 @@ class UnifiedSignal(Signal):
     def send_robust(
         self,
         sender: typing.Any,
-        message: typing.Optional[typing.Type] = None,
+        message: typing.Any = None,
         **named: typing.Any,
     ):
         self._check_message_class(message)

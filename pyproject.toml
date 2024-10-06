@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-unified-signals"
-version = "0.1.1"
+version = "0.1.2"
 description = "Django Signals extension for unifying data passed to receivers."
 authors = ["Janusz Kamieński <200957+ivellios@users.noreply.github.com>"]
 license = "MIT"
@@ -12,11 +12,14 @@ classifiers = [
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Framework :: Django :: 4.0",
     "Framework :: Django :: 4.1",
     "Framework :: Django :: 4.2",
+    "Framework :: Django :: 5.0",
+    "Framework :: Django :: 5.1",
 ]
 packages = [
     { include = "unified_signals", from = "src" }
@@ -24,8 +27,8 @@ packages = [
 
 [tool.poetry.dependencies]
 python = "^3.9"
-Django = "^4.0"
-django-stubs = "^4.2.4"
+Django = "^4.0,<6"
+django-stubs = "^4.2.4,<6"
 pytest-cov = "^4.1.0"
 setuptools = "^68.2.2"
 

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-unified-signals"
-version = "0.1.1"
+version = "0.2.0"
 description = "Django Signals extension for unifying data passed to receivers."
 authors = ["Janusz Kamieński <200957+ivellios@users.noreply.github.com>"]
 license = "MIT"
@@ -12,11 +12,14 @@ classifiers = [
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Framework :: Django :: 4.0",
     "Framework :: Django :: 4.1",
     "Framework :: Django :: 4.2",
+    "Framework :: Django :: 5.0",
+    "Framework :: Django :: 5.1",
 ]
 packages = [
     { include = "unified_signals", from = "src" }
@@ -24,22 +27,22 @@ packages = [
 
 [tool.poetry.dependencies]
 python = "^3.9"
-Django = "^4.0"
-django-stubs = "^4.2.4"
+Django = "^4.0,<6"
+django-stubs = "^4.2.4,<6"
 pytest-cov = "^4.1.0"
-setuptools = "^68.2.2"
+setuptools = "^75.1.0"
 
 [tool.poetry.group.dev.dependencies]
-black = "^23.3.0"
-botocore = "^1.31.49"
-boto3 = "^1.28.49"
-ipython = "^8.14.0"
+black = "^24.8.0"
+ipython = "^8.18.1"
 ipdb = "^0.13.13"
 liccheck = "^0.9.1"
 pytest-django = "^4.5.2"
 pytest-watch = "^4.2.0"
-safety = "^2.3.5"
-checkov = "^2.4.41"
+safety = "^3.2.8"
+checkov = "^3.2.257"
+jinja2 = "^3.1.4"
+mypy = "^1.11.2"
 
 [tool.mypy]
 plugins = [

@@ -42,6 +42,7 @@ pytest-watch = "^4.2.0"
 safety = "^3.2.8"
 checkov = "^3.2.257"
 jinja2 = "^3.1.4"
+mypy = "^1.11.2"
 
 [tool.mypy]
 plugins = [

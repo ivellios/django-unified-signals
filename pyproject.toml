@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-unified-signals"
-version = "0.2.0"
+version = "0.2.1"
 description = "Django Signals extension for unifying data passed to receivers."
 authors = ["Janusz Kamieński <200957+ivellios@users.noreply.github.com>"]
 license = "MIT"

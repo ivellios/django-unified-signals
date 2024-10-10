@@ -27,8 +27,8 @@ packages = [
 
 [tool.poetry.dependencies]
 python = "^3.9"
-Django = "^4.0,<6"
-django-stubs = "^4.2.4,<6"
+Django = ">=4.0,<6.0"
+django-stubs = ">=4.2.4,<6.0"
 pytest-cov = "^4.1.0"
 setuptools = "^75.1.0"
 

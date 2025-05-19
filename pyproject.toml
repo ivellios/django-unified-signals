@@ -28,7 +28,7 @@ packages = [
 [tool.poetry.dependencies]
 python = "^3.9"
 Django = ">=4.0,<6.0"
-setuptools = "^75.1.0"
+setuptools = ">=75.1,<79.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^24.8.0"

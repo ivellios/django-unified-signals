@@ -1,0 +1,17 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.15.22
+    hooks:
+      - id: ruff-check
+      - id: ruff-format
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v2.3.0
+    hooks:
+      - id: mypy
+        additional_dependencies:
+          - Django>=5.2,<7.0
+          - django-stubs>=5.2,<7.0
+          - pytest-django>=4.12.0,<5
+        args: [tests, src/unified_signals]
+        pass_filenames: false

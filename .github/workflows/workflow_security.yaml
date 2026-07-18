@@ -22,7 +22,7 @@ jobs:
       with:
         python-version: '3.12'
     - name: Install dependencies
-      run: pip install tox checkov
+      run: pip install checkov
     - name: Workflow safety check
       run: |
         checkov -d .github

@@ -4,8 +4,8 @@ from unittest import mock
 import pytest
 from django.dispatch import receiver
 
-from unified_signals.signals import UnifiedSignal
 from unified_signals.exceptions import UnifiedSignalMessageTypeError
+from unified_signals.signals import UnifiedSignal
 
 
 @dataclasses.dataclass
@@ -19,8 +19,7 @@ class SenderMock:
 
 
 def test_event_signal():
-    signal = UnifiedSignal(DataMock)
-    assert True
+    UnifiedSignal(DataMock)
 
 
 def test_send_signal_without_data():

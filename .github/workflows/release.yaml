@@ -25,6 +25,6 @@ jobs:
     - name: Semantic Version Release
       uses: python-semantic-release/python-semantic-release@v10.6.1
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.RELEASE_TOKEN }}
         git_committer_name: "github-actions[bot]"
         git_committer_email: "github-actions[bot]@users.noreply.github.com"

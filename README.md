@@ -74,3 +74,17 @@ exception will be raised.
 ```python
 user_deactivated_signal.send(sender, 'not a message') # raises UnifiedSignalMessageTypeError
 ```
+
+## Contributing
+
+Commits must follow [Conventional Commits](https://www.conventionalcommits.org/) (`feat:`, `fix:`, `chore:`, etc.) —
+enforced locally via `pre-commit install` (installs both the `pre-commit` and `commit-msg` hooks).
+They drive automated version bumps and changelog generation via
+[python-semantic-release](https://python-semantic-release.readthedocs.io/).
+
+## Releasing
+
+Run the `Release` workflow manually from the Actions tab (targets `master`) whenever the changes
+on `master` are ready to ship. It computes the next version from commit history, bumps
+`pyproject.toml`, updates `CHANGELOG.md`, tags the commit, and publishes a GitHub Release.
+Publishing to PyPI is still done manually.

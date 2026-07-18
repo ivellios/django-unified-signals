@@ -42,6 +42,7 @@ dev = [
     "pytest-cov>=7.1.0,<8",
     "jinja2>=3.1.6,<4",
     "mypy>=2.3.0,<3",
+    "python-semantic-release>=10,<11",
 ]
 
 [tool.uv]
@@ -74,3 +75,16 @@ plugins = [
 
 [tool.django-stubs]
 django_settings_module = "tests.testapp.settings"
+
+[tool.semantic_release]
+version_toml = ["pyproject.toml:project.version"]
+tag_format = "{version}"
+major_on_zero = true
+build_command = ""
+commit_message = "chore(release): {version}"
+
+[tool.semantic_release.branches.main]
+match = "master"
+
+[tool.semantic_release.remote]
+type = "github"

@@ -1,6 +1,6 @@
 [project]
 name = "django-unified-signals"
-version = "1.0.1"
+version = "0.2.1"
 description = "Django Signals extension for unifying data passed to receivers."
 authors = [{ name = "Janusz Kamieński", email = "200957+ivellios@users.noreply.github.com" }]
 requires-python = ">=3.11,<4"
@@ -79,7 +79,7 @@ django_settings_module = "tests.testapp.settings"
 [tool.semantic_release]
 version_toml = ["pyproject.toml:project.version"]
 tag_format = "{version}"
-major_on_zero = true
+major_on_zero = false
 build_command = ""
 commit_message = "chore(release): {version}"
 

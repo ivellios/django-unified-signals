@@ -19,7 +19,8 @@ class SenderMock:
 
 
 def test_event_signal():
-    UnifiedSignal(DataMock)
+    signal = UnifiedSignal(DataMock)
+    assert signal.message_class is DataMock
 
 
 def test_send_signal_without_data():
@@ -70,16 +71,62 @@ def test_send_robust_signal():
         assert message.required_field == 10
         assert message.__class__ == DataMock
 
-    signal.send_robust(
+    responses = signal.send_robust(
         mock.Mock(),
         DataMock(
             required_field=10,
         ),
     )
 
+    assert all(not isinstance(response, Exception) for _, response in responses)
 
-def test_send_robus_signal_checks_for_wrong_type():
+
+def test_send_robust_signal_checks_for_wrong_type():
     signal = UnifiedSignal(DataMock)
 
     with pytest.raises(UnifiedSignalMessageTypeError):
         signal.send_robust(mock.Mock(), 10)
+
+
+def test_signal_with_use_caching():
+    signal = UnifiedSignal(DataMock, use_caching=True)
+
+    handler = mock.Mock()
+    receiver(signal)(handler)
+
+    signal.send(mock.Mock(), DataMock(required_field=10))
+
+    handler.assert_called_once()
+
+
+def test_send_forwards_extra_kwargs():
+    signal = UnifiedSignal(DataMock)
+    handler = mock.Mock()
+    receiver(signal)(handler)
+
+    signal.send(mock.Mock(), DataMock(required_field=10), extra="value")
+
+    _, kwargs = handler.call_args
+    assert kwargs["extra"] == "value"
+
+
+def test_send_robust_forwards_extra_kwargs():
+    signal = UnifiedSignal(DataMock)
+    handler = mock.Mock()
+    receiver(signal)(handler)
+
+    signal.send_robust(mock.Mock(), DataMock(required_field=10), extra="value")
+
+    _, kwargs = handler.call_args
+    assert kwargs["extra"] == "value"
+
+
+def test_receiver_not_called_on_invalid_message():
+    signal = UnifiedSignal(DataMock)
+    handler = mock.Mock()
+    receiver(signal)(handler)
+
+    with pytest.raises(UnifiedSignalMessageTypeError):
+        signal.send(mock.Mock(), "not a message")
+
+    handler.assert_not_called()

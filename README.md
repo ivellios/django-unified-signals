@@ -1,6 +1,7 @@
 # Django Unified Signals
 
 [![Continuous Integration](https://github.com/ivellios/django-unified-signals/actions/workflows/ci.yaml/badge.svg)](https://github.com/ivellios/django-unified-signals/actions/workflows/ci.yaml)
+[![codecov](https://codecov.io/gh/ivellios/django-unified-signals/branch/master/graph/badge.svg)](https://codecov.io/gh/ivellios/django-unified-signals)
 
 This package extends behavior of the Django Signals, by unifying the data passed
 when the signal is sent. That way both: the sender and the receiver can be sure 

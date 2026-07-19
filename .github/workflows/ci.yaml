@@ -29,6 +29,12 @@ jobs:
       run: pip install tox uv
     - name: Run check
       run: tox -e ${{ matrix.check }}
+    - name: Upload coverage to Codecov
+      if: matrix.check == 'coverage'
+      uses: codecov/codecov-action@v5
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        files: ./coverage.xml
 
   unit-tests:
     runs-on: ubuntu-latest

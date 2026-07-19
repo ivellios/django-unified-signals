@@ -2,6 +2,20 @@
 
 <!-- version list -->
 
+## v0.4.1 (2026-07-19)
+
+### Bug Fixes
+
+- Forward message kwarg in send_robust
+  ([#27](https://github.com/ivellios/django-unified-signals/pull/27),
+  [`c6c0f08`](https://github.com/ivellios/django-unified-signals/commit/c6c0f0874426f2f1c5d6a9be397d6ca471bc8b34))
+
+### Chores
+
+- Sync uv.lock version
+  ([`5d2f80d`](https://github.com/ivellios/django-unified-signals/commit/5d2f80d91e853a59efc24f21ba96bc272495c858))
+
+
 ## v0.4.0 (2026-07-19)
 
 ### Bug Fixes

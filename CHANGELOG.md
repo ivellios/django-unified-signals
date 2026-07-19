@@ -2,6 +2,38 @@
 
 <!-- version list -->
 
+## v0.4.0 (2026-07-19)
+
+### Bug Fixes
+
+- Move uv.lock sync out of psr build_command
+  ([#26](https://github.com/ivellios/django-unified-signals/pull/26),
+  [`3d9c6b9`](https://github.com/ivellios/django-unified-signals/commit/3d9c6b9594a1c08c2454f955f131cdab4cb7de1a))
+
+- Skip CKV_GHA_7 for validated tag input
+  ([#24](https://github.com/ivellios/django-unified-signals/pull/24),
+  [`3793e06`](https://github.com/ivellios/django-unified-signals/commit/3793e06cc04f172eada663bd6f762995168a65d7))
+
+- Sync uv.lock version on release
+  ([#25](https://github.com/ivellios/django-unified-signals/pull/25),
+  [`4498b2d`](https://github.com/ivellios/django-unified-signals/commit/4498b2d80df93f2a76d8116a1c3f1fd471735815))
+
+### Continuous Integration
+
+- Add PyPI publish workflow ([#25](https://github.com/ivellios/django-unified-signals/pull/25),
+  [`4498b2d`](https://github.com/ivellios/django-unified-signals/commit/4498b2d80df93f2a76d8116a1c3f1fd471735815))
+
+### Features
+
+- Add TestPyPI publish workflow via OIDC trusted publishing
+  ([#24](https://github.com/ivellios/django-unified-signals/pull/24),
+  [`3793e06`](https://github.com/ivellios/django-unified-signals/commit/3793e06cc04f172eada663bd6f762995168a65d7))
+
+- Allow selecting which release tag to publish to TestPyPI
+  ([#24](https://github.com/ivellios/django-unified-signals/pull/24),
+  [`3793e06`](https://github.com/ivellios/django-unified-signals/commit/3793e06cc04f172eada663bd6f762995168a65d7))
+
+
 ## v0.3.0 (2026-07-19)
 
 ### Bug Fixes

@@ -2,15 +2,6 @@
 
 <!-- version list -->
 
-## v1.0.1 (2026-07-18)
-
-### Bug Fixes
-
-- **security**: Bumps the uv group with 6 updates in the / directory:
-  ([#20](https://github.com/ivellios/django-unified-signals/pull/20),
-  [`a9b2860`](https://github.com/ivellios/django-unified-signals/commit/a9b286047719e3bd3d1de3f316a958f08190cbf8))
-
-
 ## v1.0.0 (2026-07-18)
 
 ### Bug Fixes

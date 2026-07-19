@@ -1,0 +1,71 @@
+name: Publish to TestPyPI
+
+#checkov:skip=CKV_GHA_7:tag input is validated against existing GitHub releases via `gh release view` before checkout, cannot reference arbitrary refs
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag to publish (defaults to latest release if omitted)'
+        required: false
+        type: string
+
+permissions: read-all
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+    - name: Resolve release tag
+      id: release
+      env:
+        GH_TOKEN: ${{ github.token }}
+        TAG_INPUT: ${{ inputs.tag }}
+      run: |
+        if [ -n "$TAG_INPUT" ]; then
+          tag="$TAG_INPUT"
+          gh release view "$tag" --repo "${{ github.repository }}" >/dev/null
+        else
+          tag=$(gh release view --repo "${{ github.repository }}" --json tagName -q .tagName)
+        fi
+        echo "tag=$tag" >> "$GITHUB_OUTPUT"
+    - uses: actions/checkout@master
+      with:
+        ref: ${{ steps.release.outputs.tag }}
+    - name: Set up Python
+      uses: actions/setup-python@master
+      with:
+        python-version: '3.12'
+    - name: Install uv
+      run: pip install uv
+    - name: Build distributions
+      run: uv build
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@master
+      with:
+        name: dist
+        path: dist/
+
+  publish-testpypi:
+    needs: build
+    runs-on: ubuntu-latest
+
+    environment:
+      name: testpypi
+      url: https://test.pypi.org/p/django-unified-signals
+
+    permissions:
+      id-token: write
+
+    steps:
+    - name: Download build artifacts
+      uses: actions/download-artifact@master
+      with:
+        name: dist
+        path: dist/
+    - name: Publish to TestPyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        repository-url: https://test.pypi.org/legacy/

@@ -57,4 +57,4 @@ class UnifiedSignal(Signal):
         **named: typing.Any,
     ):
         self._check_message_class(message)
-        return super().send_robust(sender, **named)
+        return super().send_robust(sender, message=message, **named)

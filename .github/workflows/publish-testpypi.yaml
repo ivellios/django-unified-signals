@@ -1,5 +1,6 @@
 name: Publish to TestPyPI
 
+#checkov:skip=CKV_GHA_7:tag input is validated against existing GitHub releases via `gh release view` before checkout, cannot reference arbitrary refs
 on:
   workflow_dispatch:
     inputs:

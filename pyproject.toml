@@ -81,7 +81,8 @@ version_toml = ["pyproject.toml:project.version"]
 tag_format = "{version}"
 major_on_zero = false
 allow_zero_version = true
-build_command = ""
+build_command = "uv lock --upgrade-package django-unified-signals"
+assets = ["uv.lock"]
 commit_message = "chore(release): {version}"
 
 [tool.semantic_release.branches.main]

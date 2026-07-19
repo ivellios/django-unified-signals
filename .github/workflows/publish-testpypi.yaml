@@ -2,6 +2,11 @@ name: Publish to TestPyPI
 
 on:
   workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag to publish (defaults to latest release if omitted)'
+        required: false
+        type: string
 
 permissions: read-all
 
@@ -12,7 +17,22 @@ jobs:
       contents: read
 
     steps:
+    - name: Resolve release tag
+      id: release
+      env:
+        GH_TOKEN: ${{ github.token }}
+        TAG_INPUT: ${{ inputs.tag }}
+      run: |
+        if [ -n "$TAG_INPUT" ]; then
+          tag="$TAG_INPUT"
+          gh release view "$tag" --repo "${{ github.repository }}" >/dev/null
+        else
+          tag=$(gh release view --repo "${{ github.repository }}" --json tagName -q .tagName)
+        fi
+        echo "tag=$tag" >> "$GITHUB_OUTPUT"
     - uses: actions/checkout@master
+      with:
+        ref: ${{ steps.release.outputs.tag }}
     - name: Set up Python
       uses: actions/setup-python@master
       with:
